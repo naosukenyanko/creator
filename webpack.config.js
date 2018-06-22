@@ -5,7 +5,7 @@ const path = require('path');
 
 const config = {
 	entry: {
-		filesystem: path.join(__dirname, "src/browser.js"),
+		creator: path.join(__dirname, "src/browser.js"),
 	},
 	output: {
 		path: path.join(__dirname, '/htdocs/scripts'),

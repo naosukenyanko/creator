@@ -1,5 +1,7 @@
 
-const App = require('./app');
+import App from './app';
 
-const app = new App("container");
-app.run();
+window.onload= function(){
+	const app = new App("container");
+	app.run();
+}
