@@ -37,18 +37,16 @@ export default class Tile {
 	}
 
 	create(){
+		const container = new createjs.Container();
 		const frame = new createjs.Shape();
 		const g = frame.graphics;
 		g.beginStroke( "#a0a0a0" );
 		
 		const { tile } = settings;
 		const { x, y, data } = this;
+		console.log("data", data);
 		
-		g.rect(
-			x * tile.width, 
-			y * tile.height,
-			tile.width, 
-			tile.height);
+		g.rect(0, 0, tile.width, tile.height);
 		
 		const center = {
 			x: tile.width / 2.0,
@@ -63,7 +61,7 @@ export default class Tile {
 			g.beginFill( tile.colors[index] );
 			
 			const pos = getPos(length, i);
-			console.log(pos, center);
+			//console.log(pos, center);
 			g.moveTo(center.x, center.y);
 			g.lineTo(center.x + pos[0].x, center.y + pos[0].y);
 			g.lineTo(center.x + pos[1].x, center.y + pos[1].y);
@@ -72,6 +70,10 @@ export default class Tile {
 			g.endStroke();
 		});
 
-		return frame;
+		container.addChild(frame);
+
+		container.x = x * tile.width;
+		container.y = y * tile.height;
+		return container;
 	}
 }
